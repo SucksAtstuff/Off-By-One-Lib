@@ -8,9 +8,9 @@ In `build.gradle`:
 
 ```groovy
 dependencies {
-    jarJar(implementation("studio.offbyone:offbyonelib")) {
+    jarJar(implementation("net.succ:offbyonelib")) {
         version {
-            strictly "[${offbyonelib_version},1.0)"
+            strictly "[${offbyonelib_version},2.0)"
             prefer offbyonelib_version
         }
     }
@@ -20,7 +20,7 @@ dependencies {
 and in `gradle.properties`:
 
 ```properties
-offbyonelib_version=0.1.0
+offbyonelib_version=1.0.0
 ```
 
 The range says which versions your addon works with. Keep its top at the next major version (see [[Versioning]]).

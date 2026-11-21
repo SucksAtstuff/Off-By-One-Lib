@@ -26,8 +26,8 @@ copy when several addons include it.
 
 ```groovy
 dependencies {
-    jarJar(implementation("studio.offbyone:offbyonelib:[0.1.0,1.0)")) {
-        version { prefer "0.1.0" }
+    jarJar(implementation("net.succ:offbyonelib:[1.0.0,2.0)")) {
+        version { prefer "1.0.0" }
     }
 }
 ```
