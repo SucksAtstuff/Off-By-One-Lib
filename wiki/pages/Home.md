@@ -8,7 +8,7 @@ Shared code for Off by One Studio's Create addons on NeoForge 1.21.1: multiblock
 
 **Power** - Wires that carry FE between blocks, with tiers any mod can add, and sunlight checks that handle space, contraptions and seasons.
 
-**Integration** - Create-style advancements, JEI categories and Display Link sources.
+**Integration** - Create-style advancements, JEI categories, Display Link sources, and datagen bases for block families, loot, recipes and Ponder.
 
 ## Who it's for
 

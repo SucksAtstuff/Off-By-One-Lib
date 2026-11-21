@@ -49,3 +49,4 @@ Gradle then builds the library from source, so a change shows up in the addon st
 | `wire` | FE wires, connectors, switches and spools ([[Wires]]) |
 | `solar` | Sunlight checks and roof-style solar blocks ([[Solar]]) |
 | `advancement`, `compat.jei`, `display` | [[Advancements]], [[JEI and Display Links]] |
+| `datagen` | Block families, tinted models, loot, recipes and Ponder schematics ([[Datagen]]) |

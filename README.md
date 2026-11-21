@@ -17,7 +17,7 @@ everything under their own mod id, so a block built on the library still belongs
 - Wires: connectors, switches, relays and spools that route FE between blocks, with tiers addons
   can add to
 - Solar: sun phase, sky and angle checks, with Sable, Create: Cosmonautics and Serene Seasons support
-- Coming next: datagen tools (block families, default loot tables, tinted model parents, Ponder schematics and lang export)
+- Datagen: block families, tinted model parents, loot that defaults to dropping itself, recipe helpers, Ponder schematics and lang export
 
 ## Using it in an addon
 
