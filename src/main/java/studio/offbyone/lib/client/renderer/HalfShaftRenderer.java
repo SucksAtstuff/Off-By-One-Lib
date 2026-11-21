@@ -12,8 +12,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 
 // Draws a spinning half-shaft nub out of the bottom of the block, for machines that
-// take or give rotation from below (Andesite Solar Panel, Biofilter, Biofuel Engine,
-// Biomass Gasifier; the Electric Motor overrides shaftSide()). Deliberately has no Flywheel visualizer: Create's
+// take or give rotation from below (override shaftSide() for another face). Deliberately
+// has no Flywheel visualizer: Create's
 // SingleAxisRotatingVisual::shaft renders the full-length shaft, which pokes out of
 // both ends of the block.
 public class HalfShaftRenderer<T extends KineticBlockEntity> extends KineticBlockEntityRenderer<T> {

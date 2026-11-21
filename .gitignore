@@ -26,3 +26,6 @@ run
 # Local notes
 /CLAUDE.md
 /commit.md
+
+# Docs site build output (python wiki/build.py wiki/pages site)
+/site/

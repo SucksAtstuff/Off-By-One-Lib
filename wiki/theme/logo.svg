@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <title>Off by One Lib</title>
+  <circle cx="64" cy="64" r="62" fill="#2f6b3a"/>
+  <circle cx="64" cy="64" r="54" fill="none" stroke="#a8761c" stroke-width="4"/>
+  <text x="64" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="46" font-weight="700" fill="#f5f0e3">n+1</text>
+</svg>

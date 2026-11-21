@@ -1,13 +1,13 @@
 # Off by One Lib
 
+**Docs:** https://sucksatstuff.github.io/Off-By-One-Lib/
+
 Shared code for Off by One Studio's Create addons, for NeoForge 1.21.1 and Create 6.
 
 It's a library: it adds no blocks or items of its own. Addons extend its classes and register
 everything under their own mod id, so a block built on the library still belongs to the addon.
 
 ## What's in it
-
-Planned, being moved over from Create: Solarpunk:
 
 - Multiblock fluid tanks (Create-style, formed with `ConnectivityHandler`) and the layer placer item
 - Machine helpers: tank saving, hopper-safe item handlers, bucket/item interactions, goggle lines,
@@ -17,7 +17,7 @@ Planned, being moved over from Create: Solarpunk:
 - Wires: connectors, switches, relays and spools that route FE between blocks, with tiers addons
   can add to
 - Solar: sun phase, sky and angle checks, with Sable, Create: Cosmonautics and Serene Seasons support
-- Datagen: block families, default loot tables, tinted model parents, Ponder schematics and lang export
+- Coming next: datagen tools (block families, default loot tables, tinted model parents, Ponder schematics and lang export)
 
 ## Using it in an addon
 
@@ -38,6 +38,18 @@ in its `settings.gradle`:
 ```groovy
 includeBuild("../Off By One Lib")
 ```
+
+## Docs
+
+The docs website is built from the Markdown in `wiki/pages` (`_Sidebar.md` is the navigation) and published to GitHub Pages on every push to `main` that touches `wiki/`. Preview it locally:
+
+```bash
+pip install -r wiki/requirements.txt
+python wiki/build.py wiki/pages site
+python -m http.server -d site
+```
+
+A `[[link]]` to a page that doesn't exist fails the build.
 
 ## Building
 
