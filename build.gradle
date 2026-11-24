@@ -14,7 +14,14 @@ repositories {
     maven { url = "https://mvn.devos.one/snapshots" } // Registrate
     maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // ForgeConfigAPIPort
     maven { url = "https://maven.blamejared.com" } // JEI
+    exclusiveContent { // KubeJS and Rhino (compile-only; test_kubejs adds them to dev runs)
+        forRepository { maven { url = "https://maven.latvian.dev/releases" } }
+        filter { includeGroup "dev.latvian.mods" }
+    }
 }
+
+// See test_kubejs in gradle.properties.
+def testKubeJS = project.findProperty('test_kubejs')?.toString()?.toBoolean() ?: false
 
 base {
     // offbyonelib-1.21.1-0.1.0.jar
@@ -75,6 +82,16 @@ dependencies {
     // JEI is optional: only the category base classes touch it
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+
+    // KubeJS integration (net.succ.offbyonelib.kubejs). Compile-only: the plugin class is only
+    // loaded by KubeJS itself, through kubejs.plugins.txt, so KubeJS is never required.
+    compileOnly("dev.latvian.mods:kubejs-neoforge:${kubejs_version}") { transitive = false }
+    compileOnly("dev.latvian.mods:rhino:${rhino_version}") { transitive = false }
+    if (testKubeJS) {
+        // Its other libraries are bundled inside the jar; Rhino is a separate mod
+        runtimeOnly("dev.latvian.mods:kubejs-neoforge:${kubejs_version}") { transitive = false }
+        runtimeOnly("dev.latvian.mods:rhino:${rhino_version}") { transitive = false }
+    }
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

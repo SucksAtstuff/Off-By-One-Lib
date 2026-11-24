@@ -7,6 +7,11 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import org.jetbrains.annotations.Nullable;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -72,6 +77,27 @@ public abstract class AddonRecipeCategory<T> implements IRecipeCategory<T> {
     }
 
     /** Where the arrow goes; categories whose slots move with the recipe line it up with them. */
+    /**
+     * The recipe's id, which JEI shows on the output's tooltip with advanced tooltips (F3+H)
+     * and uses to save bookmarks. Found by looking the recipe up in the client's recipes; a
+     * category whose entries wrap a recipe returns it from {@link #recipeOf}.
+     */
+    @Override
+    public @Nullable ResourceLocation getRegistryName(T recipe) {
+        Recipe<?> wrapped = recipeOf(recipe);
+        if (wrapped == null) return null;
+        ClientLevel level = Minecraft.getInstance().level;
+        if (level == null) return null;
+        for (RecipeHolder<?> holder : level.getRecipeManager().getRecipes())
+            if (holder.value() == wrapped) return holder.id();
+        return null;
+    }
+
+    /** The data-driven recipe behind an entry, or null for display-only entries. */
+    protected @Nullable Recipe<?> recipeOf(T recipe) {
+        return recipe instanceof Recipe<?> r ? r : null;
+    }
+
     protected int arrowY(T recipe) {
         return ARROW_Y;
     }

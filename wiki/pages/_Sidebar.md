@@ -16,3 +16,4 @@
 - [[Advancements]]
 - [[JEI and Display Links]]
 - [[Datagen]]
+- [[KubeJS]]

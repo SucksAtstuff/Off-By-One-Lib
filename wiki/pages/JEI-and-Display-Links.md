@@ -19,6 +19,15 @@ public class HeatingCategory extends AddonRecipeCategory<HeatingRecipe> {
 
 `drawText(graphics, text, x, y)` draws wrapped grey text and returns the y for the next line; override `arrowY(recipe)` to move the arrow.
 
+**Recipe IDs.** If your category shows data-driven recipes, JEI shows each one's ID on the output's tooltip when advanced tooltips are on (F3+H), and uses it to save bookmarks. The category finds the ID by looking the recipe up in the client's recipes. If your entries wrap a recipe instead of being one (say, a sealed interface with a display-only entry alongside the real ones), override `recipeOf` to return it:
+
+```java
+@Override
+protected Recipe<?> recipeOf(Entry entry) {
+    return entry instanceof Entry.Melt melt ? melt.recipe() : null;   // null: display-only, no ID
+}
+```
+
 ## Display Link sources
 
 Two Create Display Link sources built from functions, so most readouts are one line. Register them in Create's `DisplaySource` registry under your mod id (the id is saved on placed links, so never rename one) and attach them to your block entity type.
