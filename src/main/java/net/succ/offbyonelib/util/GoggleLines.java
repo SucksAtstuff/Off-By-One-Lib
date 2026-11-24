@@ -28,6 +28,11 @@ public class GoggleLines {
         this.keyPrefix = keyPrefix;
     }
 
+    /** The full lang key for {@code langKey}, for lang providers. */
+    public String key(String langKey) {
+        return namespace + "." + keyPrefix + langKey;
+    }
+
     /** The label for {@code langKey}, to build other goggle lines with the same keys. */
     public LangBuilder label(String langKey, Object... args) {
         return new LangBuilder(namespace).translate(keyPrefix + langKey, args);

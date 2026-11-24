@@ -105,3 +105,28 @@ Ponder scene and tag text can live in the scene code. Export it in your lang pro
 ```java
 PonderLang.provide(new MyPonderPlugin(), MODID, this::add);
 ```
+
+## Lang
+
+`AddonLangProvider` builds the repetitive keys, so only the text is typed out. Pass your `GoggleLines`, so goggle labels go under the same keys your block entities read:
+
+```java
+public class ModLangProvider extends AddonLangProvider {
+    public ModLangProvider(PackOutput output) {
+        super(output, MODID, MyMod.GOGGLES);
+    }
+
+    @Override
+    protected void addTranslations() {
+        // block.<modid>.engine.tooltip.summary / condition1 / behaviour1 ...
+        tooltip(ModBlocks.ENGINE, "Burns _fuel_ for _Rotational Force_.",
+                "While fuelled", "Outputs 16 RPM.");
+        goggle("fuel", "Fuel: ");                 // under your GoggleLines prefix
+        subtitle("engine_loop", "Engine running"); // subtitles.<modid>.engine_loop
+        jei("category.mixing", "Mixing");          // jei.<modid>.category.mixing
+        add(ModBlocks.ENGINE.get(), toTitleCase("engine"));
+    }
+}
+```
+
+`tooltip` takes the block itself, so a renamed block is a compile error; the `String` overload is for blocks registered without a field. A condition without a behaviour fails datagen. The tooltips still need registering on the client (`ItemTooltips`).
