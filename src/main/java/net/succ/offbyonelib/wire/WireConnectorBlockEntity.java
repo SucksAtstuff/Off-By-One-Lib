@@ -43,6 +43,11 @@ public class WireConnectorBlockEntity extends WireNodeBlockEntity implements IHa
         super(type, pos, state, system);
     }
 
+    /** FE/t moved through this connector, averaged over the last second (goggles and Display Links). */
+    public int throughput() {
+        return throughput;
+    }
+
     // The face of this connector that touches the block it's on.
     public Direction back() {
         return getBlockState().getValue(WireConnectorBlock.FACING).getOpposite();
